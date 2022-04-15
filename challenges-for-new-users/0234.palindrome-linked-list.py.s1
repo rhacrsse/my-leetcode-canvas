@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+
+import math as mt
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def isPalindrome(self, head: [ListNode]) -> bool:
+        s = []
+        while (head.next != None):
+            s.append(head.val)
+            head = head.next
+        s.append(head.val)
+
+        return s == list(reversed(s))
+
+# UNIT TESTING #
+pino = Solution()
+
+head = ListNode(1,ListNode(2,ListNode(2,ListNode(1))))
+print(pino.isPalindrome(head))
+
+head = ListNode(1,ListNode(2))
+print(pino.isPalindrome(head))

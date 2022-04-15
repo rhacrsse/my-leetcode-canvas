@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+
+import math as mt
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def isOdd(self, val: int) -> bool:
+        return val % 2 != 0
+
+    def isPalindrome(self, head: [ListNode]) -> bool:
+        s = []
+        while (head.next != None):
+            s.append(head.val)
+            head = head.next
+        s.append(head.val)
+
+        mid  = round(( len(s) - 1 ) / 2 ) if self.isOdd(len(s)) else (( len(s) - 1 ) / 2 )
+        lidx = ( mid - 1 ) if self.isOdd(len(s)) else mt.floor(mid)
+        ridx = ( mid + 1 ) if self.isOdd(len(s)) else mt.ceil(mid)
+
+        while ( lidx >= 0 and ridx <= len(s) ):
+            if s[lidx] != s[ridx]:
+                return False
+            lidx = lidx - 1
+            ridx = ridx + 1
+        return True
+
+# UNIT TESTING #
+pino = Solution()
+
+head = ListNode(1,ListNode(2,ListNode(2,ListNode(1))))
+print(pino.isPalindrome(head))
+
+head = ListNode(1,ListNode(2))
+print(pino.isPalindrome(head))
+
+

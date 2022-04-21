@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+class Solution:
+    def numberOfSteps(self, num: int) -> int:
+        res = 0
+        while(num!=0):
+            if num % 2 == 0:
+                num = round(num / 2)
+            else:   
+                num = num - 1
+            res = res + 1
+        return res
+
+pino = Solution()
+print(pino.numberOfSteps(14))
+print(pino.numberOfSteps(8))
+print(pino.numberOfSteps(123))

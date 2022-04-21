@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+class Solution:
+    def tempf(self, num: int, res: int) -> int:
+        return res if num == 0 else self.tempf(round(num/2),res+1) if num % 2 == 0 else self.tempf(num-1,res+1)
+
+    def numberOfSteps(self, num: int) -> int:
+        return self.tempf(num,0) 
+        
+pino = Solution()
+print(pino.numberOfSteps(14))
+print(pino.numberOfSteps(8))
+print(pino.numberOfSteps(123))
